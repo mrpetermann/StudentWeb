@@ -3,12 +3,15 @@ package com.petermann.studentweb;
 import java.io.*;
 import java.util.ArrayList;
 
+import com.petermann.studentweb.dao.DataSource;
 import com.petermann.studentweb.models.Teacher;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+
+import javax.xml.crypto.Data;
 
 @WebServlet(name = "teacherServlet", value = "/teacher")
 public class TeacherServlet extends HttpServlet {
@@ -17,15 +20,16 @@ public class TeacherServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         if(request.getSession().getAttribute("teachers") == null)
-            request.getSession().setAttribute("teachers", new ArrayList<Teacher>());
+            request.getSession().setAttribute("teachers", DataSource.getInstance().getTeacherArrayList());
 
         RequestDispatcher view = request.getRequestDispatcher("teacher.jsp");
         view.forward(request, response);
     }
 
-    @Override @SuppressWarnings("unchecked")
+    @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        ArrayList<Teacher> teachers = (ArrayList<Teacher>)request.getSession().getAttribute("teachers");
+        //Existing teacher list
+        ArrayList<Teacher> teachers = DataSource.getInstance().getTeacherArrayList();
 
         //Construct new teacher from request
         String firstName = request.getParameter("firstName");
@@ -34,6 +38,7 @@ public class TeacherServlet extends HttpServlet {
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
 
+        //Only create if any field contains a value
         if(!(firstName.equals("") && lastName.equals("") && department.equals("")
                 && email.equals("") && phone.equals("")))
             teachers.add(new Teacher(firstName, lastName, email, phone, department));
