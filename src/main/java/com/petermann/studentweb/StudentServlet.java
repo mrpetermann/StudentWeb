@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 import com.petermann.studentweb.dao.DataSource;
+import com.petermann.studentweb.models.Student;
 import com.petermann.studentweb.models.Teacher;
 
 import jakarta.servlet.RequestDispatcher;
@@ -11,37 +12,37 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
-@WebServlet(name = "teacherServlet", value = "/teacher")
-public class TeacherServlet extends HttpServlet {
+@WebServlet(name = "studentServlet", value = "/student")
+public class StudentServlet extends HttpServlet {
     public void init() { }
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        if(request.getSession().getAttribute("teachers") == null)
-            request.getSession().setAttribute("teachers", DataSource.getInstance().getTeacherArrayList());
+        if(request.getSession().getAttribute("students") == null)
+            request.getSession().setAttribute("students", DataSource.getInstance().getStudentArrayList());
 
-        RequestDispatcher view = request.getRequestDispatcher("teacher.jsp");
+        RequestDispatcher view = request.getRequestDispatcher("student.jsp");
         view.forward(request, response);
     }
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         //Existing teacher list
-        ArrayList<Teacher> teachers = DataSource.getInstance().getTeacherArrayList();
+        ArrayList<Student> students = DataSource.getInstance().getStudentArrayList();
 
         //Construct new teacher from request
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
-        String department = request.getParameter("department");
+        int grade = Integer.parseInt(request.getParameter("grade"));
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
 
         //Only create if any field contains a value
-        if(!(firstName.equals("") && lastName.equals("") && department.equals("")
+        if(!(firstName.equals("") && lastName.equals("")
                 && email.equals("") && phone.equals("")))
-            teachers.add(new Teacher(firstName, lastName, email, phone, department));
+            students.add(new Student(firstName, lastName, email, phone, grade));
 
-        request.getSession().setAttribute("teachers", teachers);
+        request.getSession().setAttribute("students", students);
         doGet(request, response);
     }
 
