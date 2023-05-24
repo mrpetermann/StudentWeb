@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 public class DataSource {
     private static DataSource dataSource;
-    //private ArrayList<Student> studentArrayList;
-    private ArrayList<Teacher> teacherArrayList;
+    //private final ArrayList<Student> studentArrayList;
+    private final ArrayList<Teacher> teacherArrayList;
 
     private DataSource() {
         //studentArrayList = new ArrayList<>();
