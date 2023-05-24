@@ -33,9 +33,16 @@ public class StudentServlet extends HttpServlet {
         //Construct new teacher from request
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
-        int grade = Integer.parseInt(request.getParameter("grade"));
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
+
+        //Get grade or default to 1
+        int grade;
+        try {
+            grade = Integer.parseInt(request.getParameter("grade"));
+        } catch(Exception e) {
+            grade = 1;
+        }
 
         //Only create if any field contains a value
         if(!(firstName.equals("") && lastName.equals("")
