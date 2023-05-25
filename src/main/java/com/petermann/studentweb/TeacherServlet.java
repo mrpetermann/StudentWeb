@@ -53,5 +53,22 @@ public class TeacherServlet extends HttpServlet {
         request.getSession().setAttribute("teachers", teachers);
     }
 
+    @Override
+    public void doPut(HttpServletRequest request, HttpServletResponse response) {
+        int index = Integer.parseInt(request.getParameter("update"));
+        String newFirstName = request.getParameter("newFirstName");
+        String newLastName = request.getParameter("newLastName");
+        String newDepartment = request.getParameter("newDepartment");
+        String newEmail = request.getParameter("newEmail");
+        String newPhone = request.getParameter("newPhone");
+
+        Teacher itemToUpdate = DataSource.getInstance().getTeacherArrayList().get(index);
+        itemToUpdate.setFirstName(newFirstName);
+        itemToUpdate.setLastName(newLastName);
+        itemToUpdate.setDepartment(newDepartment);
+        itemToUpdate.setEmail(newEmail);
+        itemToUpdate.setPhone(newPhone);
+    }
+
     public void destroy() { }
 }
