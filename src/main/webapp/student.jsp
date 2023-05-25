@@ -83,5 +83,5 @@
         </table>
     </div>
 </body>
-<script src="student.js"></script>
+<script src="script/student.js"></script>
 </html>
