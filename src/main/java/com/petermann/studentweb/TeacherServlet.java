@@ -4,7 +4,6 @@ import java.io.*;
 import java.util.ArrayList;
 
 import com.petermann.studentweb.dao.DataSource;
-import com.petermann.studentweb.models.Student;
 import com.petermann.studentweb.models.Teacher;
 
 import jakarta.servlet.RequestDispatcher;

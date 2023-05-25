@@ -5,6 +5,7 @@
 <head>
     <title>Teacher Directory</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/bb20ef855a.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
@@ -45,7 +46,7 @@
 <% @SuppressWarnings("unchecked")
     ArrayList<Teacher> teachers = (ArrayList<Teacher>)request.getSession().getAttribute("teachers"); %>
 <div class="container align-contents-center">
-    <table class="table table-striped m-3">
+    <table class="table table-hover m-3">
         <thead>
             <tr>
                 <th>First Name</th>
@@ -59,24 +60,41 @@
         <tbody>
         <% for(Teacher teacher : teachers) { %>
             <tr class="align-middle">
-                <td>
+                <td data-field="oldFirstName" data-val="<%= teacher.getFirstName() %>">
                 <%= teacher.getFirstName() %>
                 </td>
-                <td>
+                <td data-field="oldLastName" data-val="<%= teacher.getLastName() %>">
                 <%= teacher.getLastName() %>
                 </td>
-                <td>
+                <td data-field="oldDepartment" data-val="<%= teacher.getDepartment() %>">
                 <%= teacher.getDepartment() %>
                 </td>
-                <td>
+                <td data-field="oldEmail" data-val="<%= teacher.getEmail() %>">
                 <%= teacher.getEmail() %>
                 </td>
-                <td>
+                <td data-field="oldPhone" data-val="<%= teacher.getPhone() %>">
                 <%= teacher.getPhone() %>
                 </td>
                 <td>
+                    <button class="btn btn-primary edit" data-index="<%= teachers.indexOf(teacher) %>"><i class="fa fa-pencil"></i></button>
                     <button class="btn btn-danger delete" data-index="<%= teachers.indexOf(teacher) %>"><i class="fa fa-trash"></i></button>
                 </td>
+            </tr>
+            <tr class="align-middle" style="display: none">
+                <td>
+                    <input class="form-control" data-field="newFirstName" value="<%= teacher.getFirstName() %>" />
+                </td>
+                <td>
+                    <input class="form-control" data-field="newLastName" value="<%= teacher.getLastName() %>" /></td>
+                <td>
+                    <input class="form-control" data-field="newDepartment" value="<%= teacher.getDepartment() %>" /></td>
+                <td>
+                    <input class="form-control" data-field="newEmail" type="email" value="<%= teacher.getEmail() %>" /></td>
+                <td>
+                    <input class="form-control" data-field="newPhone" value="<%= teacher.getPhone() %>" /></td>
+                <td>
+                    <button class="btn btn-success save" data-index="<%= teachers.indexOf(teacher) %>"><i class="fa fa-save"></i></button>
+                    <button class="btn btn-danger cancel" data-index="<%= teachers.indexOf(teacher) %>"><i class="fa fa-x"></i></button></td>
             </tr>
         <% } %>
         </tbody>
