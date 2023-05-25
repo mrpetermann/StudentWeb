@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 import com.petermann.studentweb.dao.DataSource;
+import com.petermann.studentweb.models.Student;
 import com.petermann.studentweb.models.Teacher;
 
 import jakarta.servlet.RequestDispatcher;
@@ -42,7 +43,15 @@ public class TeacherServlet extends HttpServlet {
             teachers.add(new Teacher(firstName, lastName, email, phone, department));
 
         request.getSession().setAttribute("teachers", teachers);
-        doGet(request, response);
+        response.sendRedirect(request.getContextPath() + "/teacher");
+    }
+
+    @Override
+    public void doDelete(HttpServletRequest request, HttpServletResponse response) {
+        ArrayList<Teacher> teachers = DataSource.getInstance().getTeacherArrayList();
+
+        teachers.remove(Integer.parseInt(request.getParameter("delete")));
+        request.getSession().setAttribute("teachers", teachers);
     }
 
     public void destroy() { }
