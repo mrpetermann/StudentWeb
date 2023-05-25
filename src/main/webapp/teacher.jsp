@@ -10,7 +10,7 @@
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 </head>
 <body>
-<jsp:include page="header.jsp" />
+<jsp:include page="shared/header.jsp" />
 <form action="teacher" method="post">
     <div class="container">
         <div class="row">
