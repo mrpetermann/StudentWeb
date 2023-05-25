@@ -83,17 +83,5 @@
         </table>
     </div>
 </body>
-<script>
-    $(".delete").on('click', function() {
-       let index = $(this).data("index");
-
-       $.ajax({
-           type: "DELETE",
-           url: "./student?delete=0",
-           success: function() {
-               location.reload();
-           }
-       });
-    });
-</script>
+<script src="student.js"></script>
 </html>
