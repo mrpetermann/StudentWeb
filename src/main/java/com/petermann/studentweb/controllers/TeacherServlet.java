@@ -1,4 +1,4 @@
-package com.petermann.studentweb;
+package com.petermann.studentweb.controllers;
 
 import java.io.*;
 import java.util.ArrayList;
