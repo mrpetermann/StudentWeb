@@ -1,4 +1,4 @@
-$('.delete').on('click', function() {
+$('[data-function="delete"]').on('click', function() {
     let index = $(this).data('index');
 
     $.ajax({
@@ -10,7 +10,7 @@ $('.delete').on('click', function() {
     });
 });
 
-$('.edit').on('click', function() {
+$('[data-function="edit"]').on('click', function() {
     const target = $(this).closest('tr');
     const next = target.next('tr');
 
@@ -29,7 +29,7 @@ $('.edit').on('click', function() {
     });
 });
 
-$('.cancel').on('click', function() {
+$('[data-function="cancel"]').on('click', function() {
     //Flip animation
     const target = $(this).closest('tr');
     const prev = target.prev('tr');
@@ -56,7 +56,7 @@ $('.cancel').on('click', function() {
     target.find('[data-field="newPhone"]').val(prev.find('[data-field="oldPhone"]').data('val'));
 });
 
-$('.save').on('click', function() {
+$('[data-function="save"]').on('click', function() {
     let index = $(this).data('index');
 
     //Updated values

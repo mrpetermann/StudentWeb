@@ -76,8 +76,8 @@
                 <%= teacher.getPhone() %>
                 </td>
                 <td>
-                    <button class="btn btn-primary edit" data-index="<%= teachers.indexOf(teacher) %>"><i class="fa fa-pencil"></i></button>
-                    <button class="btn btn-danger delete" data-index="<%= teachers.indexOf(teacher) %>"><i class="fa fa-trash"></i></button>
+                    <button class="btn btn-primary" data-function="edit" data-index="<%= teachers.indexOf(teacher) %>"><i class="fa fa-pencil"></i></button>
+                    <button class="btn btn-danger" data-function="delete" data-index="<%= teachers.indexOf(teacher) %>"><i class="fa fa-trash"></i></button>
                 </td>
             </tr>
             <tr class="align-middle" style="display: none">
@@ -93,8 +93,8 @@
                 <td>
                     <input class="form-control" data-field="newPhone" value="<%= teacher.getPhone() %>" /></td>
                 <td>
-                    <button class="btn btn-success save" data-index="<%= teachers.indexOf(teacher) %>"><i class="fa fa-save"></i></button>
-                    <button class="btn btn-danger cancel" data-index="<%= teachers.indexOf(teacher) %>"><i class="fa fa-x"></i></button></td>
+                    <button class="btn btn-success" data-function="save" data-index="<%= teachers.indexOf(teacher) %>"><i class="fa fa-save"></i></button>
+                    <button class="btn btn-danger" data-function="cancel" data-index="<%= teachers.indexOf(teacher) %>"><i class="fa fa-x"></i></button></td>
             </tr>
         <% } %>
         </tbody>
