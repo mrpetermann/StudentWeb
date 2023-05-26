@@ -49,12 +49,12 @@
     <table class="table table-hover m-3">
         <thead>
             <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Department</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th></th>
+                <th class="col">First Name</th>
+                <th class="col">Last Name</th>
+                <th class="col">Department</th>
+                <th class="col">Email</th>
+                <th class="col">Phone</th>
+                <th class="col"></th>
             </tr>
         </thead>
         <tbody>

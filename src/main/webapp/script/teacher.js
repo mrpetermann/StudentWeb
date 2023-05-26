@@ -12,22 +12,20 @@ $('.delete').on('click', function() {
 
 $('.edit').on('click', function() {
     const target = $(this).closest('tr');
+    const next = target.next('tr');
+
     target.addClass('animate__animated animate__flipOutY animate__faster');
 
     target.on('animationend', function() {
-        target.css('display', 'none');
-        target.removeClass('animate__animated animate__flipOutY animate__faster')
+        target.off('animationend')
+            .hide().removeClass('animate__animated animate__flipOutY animate__faster')
 
-        const next = target.next('tr');
-        next.css('display', 'table-row');
-        next.addClass('animate__animated animate__flipInY animate__faster');
+        next.show().addClass('animate__animated animate__flipInY animate__faster');
 
         next.on('animationend', function() {
-           next.removeClass('animate__animated animate__flipInY animate__faster');
-           next.off('animationend');
+            next.off('animationend')
+                .removeClass('animate__animated animate__flipInY animate__faster');
         });
-
-        target.off('animationend');
     });
 });
 
@@ -39,18 +37,15 @@ $('.cancel').on('click', function() {
     target.addClass('animate__animated animate__flipOutY animate__faster');
 
     target.on('animationend', function() {
-      target.css('display', 'none');
-      target.removeClass('animate__animated animate__flipOutY animate__faster')
+        target.off('animationend')
+            .hide().removeClass('animate__animated animate__flipOutY animate__faster')
 
-      prev.css('display', 'table-row');
-      prev.addClass('animate__animated animate_flipInY animate__faster');
+        prev.show().addClass('animate__animated animate__flipInY animate__faster');
 
-       prev.on('animationend', function() {
-           prev.removeClass('animate__animated animate__flipInY animate__faster');
-           prev.off('animationend');
-       });
-
-       target.off('animationend');
+        prev.on('animationend', function() {
+            prev.off('animationend')
+                .removeClass('animate__animated animate__flipInY animate__faster');
+        });
     });
 
     //Reset fields
