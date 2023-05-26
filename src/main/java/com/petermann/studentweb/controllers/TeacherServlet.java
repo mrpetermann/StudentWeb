@@ -49,18 +49,25 @@ public class TeacherServlet extends HttpServlet {
     public void doDelete(HttpServletRequest request, HttpServletResponse response) {
         ArrayList<Teacher> teachers = DataSource.getInstance().getTeacherArrayList();
 
-        teachers.remove(Integer.parseInt(request.getParameter("delete")));
+        teachers.remove(Integer.parseInt(request.getParameter("index")));
         request.getSession().setAttribute("teachers", teachers);
     }
 
     @Override
     public void doPut(HttpServletRequest request, HttpServletResponse response) {
-        int index = Integer.parseInt(request.getParameter("update"));
+        int index = Integer.parseInt(request.getParameter("index"));
         String newFirstName = request.getParameter("newFirstName");
         String newLastName = request.getParameter("newLastName");
         String newDepartment = request.getParameter("newDepartment");
         String newEmail = request.getParameter("newEmail");
         String newPhone = request.getParameter("newPhone");
+
+        //If all fields are empty, delete object
+        if(newFirstName.equals("") && newLastName.equals("") && newDepartment.equals("") &&
+            newEmail.equals("") && newPhone.equals("")) {
+            doDelete(request, response);
+            return;
+        }
 
         Teacher itemToUpdate = DataSource.getInstance().getTeacherArrayList().get(index);
         itemToUpdate.setFirstName(newFirstName);

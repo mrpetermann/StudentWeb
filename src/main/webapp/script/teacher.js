@@ -3,7 +3,7 @@ $('[data-function="delete"]').on('click', function() {
 
     $.ajax({
         type: "DELETE",
-        url: "./teacher?delete=" + index,
+        url: "./teacher?index=" + index,
         success: function() {
             location.reload();
         }
@@ -70,7 +70,7 @@ $('[data-function="save"]').on('click', function() {
     //Send update request to server
     $.ajax({
         type: "PUT",
-        url: './teacher?update=' + index + '&newFirstName=' + newFirstName +
+        url: './teacher?index=' + index + '&newFirstName=' + newFirstName +
                 '&newLastName=' + newLastName + '&newDepartment=' + newDepartment +
                 '&newEmail=' + newEmail + '&newPhone=' + newPhone,
         success: function() {
