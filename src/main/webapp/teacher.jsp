@@ -82,16 +82,16 @@
             </tr>
             <tr class="align-middle" style="display: none">
                 <td>
-                    <input class="form-control" data-field="newFirstName" value="<%= teacher.getFirstName() %>" />
+                    <input class="form-control" data-field="newFirstName" value="<%= teacher.getFirstName() %>" aria-label="new first name" />
                 </td>
                 <td>
-                    <input class="form-control" data-field="newLastName" value="<%= teacher.getLastName() %>" /></td>
+                    <input class="form-control" data-field="newLastName" value="<%= teacher.getLastName() %>" aria-label="new last name" /></td>
                 <td>
-                    <input class="form-control" data-field="newDepartment" value="<%= teacher.getDepartment() %>" /></td>
+                    <input class="form-control" data-field="newDepartment" value="<%= teacher.getDepartment() %>" aria-label="new department" /></td>
                 <td>
-                    <input class="form-control" data-field="newEmail" type="email" value="<%= teacher.getEmail() %>" /></td>
+                    <input class="form-control" data-field="newEmail" type="email" value="<%= teacher.getEmail() %>" aria-label="new email" /></td>
                 <td>
-                    <input class="form-control" data-field="newPhone" value="<%= teacher.getPhone() %>" /></td>
+                    <input class="form-control" data-field="newPhone" value="<%= teacher.getPhone() %>" aria-label="new phone" /></td>
                 <td>
                     <button class="btn btn-success" data-function="save" data-index="<%= teachers.indexOf(teacher) %>"><i class="fa fa-save"></i></button>
                     <button class="btn btn-danger" data-function="cancel" data-index="<%= teachers.indexOf(teacher) %>"><i class="fa fa-x"></i></button></td>
