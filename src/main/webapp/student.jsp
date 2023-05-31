@@ -59,6 +59,27 @@
             <tbody>
             <% for(Student student : students) { %>
             <tr class="align-middle">
+                <td data-field="oldFirstName" data-val="<%= student.getFirstName() %>">
+                    <%= student.getFirstName() %>
+                </td>
+                <td data-field="oldLastName" data-val="<%= student.getLastName() %>">
+                    <%= student.getLastName() %>
+                </td>
+                <td data-field="oldDepartment" data-val="<%= student.getGrade() %>">
+                    <%= student.getGrade() %>
+                </td>
+                <td data-field="oldEmail" data-val="<%= student.getEmail() %>">
+                    <%= student.getEmail() %>
+                </td>
+                <td data-field="oldPhone" data-val="<%= student.getPhone().getNumber() %>">
+                    <%= student.getPhone().getNumberFormatted() %>
+                </td>
+                <td>
+                    <button class="btn btn-primary" data-function="edit" data-index="<%= students.indexOf(student) %>"><i class="fa fa-pencil"></i></button>
+                    <button class="btn btn-danger" data-function="delete" data-index="<%= students.indexOf(student) %>"><i class="fa fa-trash"></i></button>
+                </td>
+            </tr>
+            <tr class="align-middle">
                 <td>
                     <%= student.getFirstName() %>
                 </td>
