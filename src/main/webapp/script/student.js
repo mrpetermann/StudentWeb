@@ -1,5 +1,5 @@
-$(".delete").on('click', function() {
-    let index = $(this).data("index");
+$('[data-function="delete"]').on('click', function() {
+    let index = $(this).data('index');
 
     $.ajax({
         type: "DELETE",

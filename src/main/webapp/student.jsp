@@ -75,7 +75,8 @@
                     <%= student.getPhone().getNumberFormatted() %>
                 </td>
                 <td>
-                    <button class="btn btn-danger delete" data-index="<%= students.indexOf(student) %>"><i class="fa fa-trash"></i></button>
+                    <button class="btn btn-primary" data-function="edit" data-index="<%= students.indexOf(student) %>"><i class="fa fa-pencil"></i></button>
+                    <button class="btn btn-danger" data-function="delete" data-index="<%= students.indexOf(student) %>"><i class="fa fa-trash"></i></button>
                 </td>
             </tr>
             <% } %>
