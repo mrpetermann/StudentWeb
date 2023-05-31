@@ -72,7 +72,7 @@
                     <%= student.getEmail() %>
                 </td>
                 <td>
-                    <%= student.getPhone() %>
+                    <%= student.getPhone().getNumberFormatted() %>
                 </td>
                 <td>
                     <button class="btn btn-danger delete" data-index="<%= students.indexOf(student) %>"><i class="fa fa-trash"></i></button>
