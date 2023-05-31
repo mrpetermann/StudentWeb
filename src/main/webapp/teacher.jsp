@@ -72,8 +72,8 @@
                 <td data-field="oldEmail" data-val="<%= teacher.getEmail() %>">
                 <%= teacher.getEmail() %>
                 </td>
-                <td data-field="oldPhone" data-val="<%= teacher.getPhone() %>">
-                <%= teacher.getPhone() %>
+                <td data-field="oldPhone" data-val="<%= teacher.getPhone().getNumber() %>">
+                <%= teacher.getPhone().getNumberFormatted() %>
                 </td>
                 <td>
                     <button class="btn btn-primary" data-function="edit" data-index="<%= teachers.indexOf(teacher) %>"><i class="fa fa-pencil"></i></button>
@@ -91,7 +91,7 @@
                 <td>
                     <input class="form-control" data-field="newEmail" type="email" value="<%= teacher.getEmail() %>" aria-label="new email" /></td>
                 <td>
-                    <input class="form-control" data-field="newPhone" value="<%= teacher.getPhone() %>" aria-label="new phone" /></td>
+                    <input class="form-control" data-field="newPhone" value="<%= teacher.getPhone().getNumber() %>" aria-label="new phone" /></td>
                 <td>
                     <button class="btn btn-success" data-function="save" data-index="<%= teachers.indexOf(teacher) %>"><i class="fa fa-save"></i></button>
                     <button class="btn btn-danger" data-function="cancel" data-index="<%= teachers.indexOf(teacher) %>"><i class="fa fa-x"></i></button></td>

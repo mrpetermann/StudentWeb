@@ -4,13 +4,13 @@ public abstract class Person {
     private String firstName;
     private String lastName;
     private String email;
-    private String phone;
+    private PhoneNumber phone;
 
     public Person(String firstName, String lastName, String email, String phone) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.phone = phone;
+        this.phone = new PhoneNumber(phone);
     }
 
     public String getFirstName() {
@@ -37,11 +37,11 @@ public abstract class Person {
         this.email = email;
     }
 
-    public String getPhone() {
+    public PhoneNumber getPhone() {
         return phone;
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+        this.phone = new PhoneNumber(phone);
     }
 }
