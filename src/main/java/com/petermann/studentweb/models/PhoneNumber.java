@@ -4,7 +4,7 @@ public class PhoneNumber {
     private String number;
 
     public PhoneNumber(String number) {
-        if(number.length() == 10)
+        if(number.length() == 10 || number.length() == 0)
             this.number = number;
         else
             this.number = "0000000000";
@@ -15,6 +15,9 @@ public class PhoneNumber {
     }
 
     public String getNumberFormatted() {
+        if(number.equals(""))
+            return "";
+
         return "(" + number.substring(0, 3) + ")" + number.substring(3, 6) +
                 "-" + number.substring(6);
     }
