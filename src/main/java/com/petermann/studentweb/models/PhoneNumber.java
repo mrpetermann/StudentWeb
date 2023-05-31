@@ -1,7 +1,7 @@
 package com.petermann.studentweb.models;
 
 public class PhoneNumber {
-    private String number;
+    private final String number;
 
     public PhoneNumber(String number) {
         if(number.length() == 10 || number.length() == 0)
