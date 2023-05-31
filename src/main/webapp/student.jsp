@@ -65,7 +65,7 @@
                 <td data-field="oldLastName" data-val="<%= student.getLastName() %>">
                     <%= student.getLastName() %>
                 </td>
-                <td data-field="oldDepartment" data-val="<%= student.getGrade() %>">
+                <td data-field="oldGrade" data-val="<%= student.getGrade() %>">
                     <%= student.getGrade() %>
                 </td>
                 <td data-field="oldEmail" data-val="<%= student.getEmail() %>">
@@ -79,26 +79,21 @@
                     <button class="btn btn-danger" data-function="delete" data-index="<%= students.indexOf(student) %>"><i class="fa fa-trash"></i></button>
                 </td>
             </tr>
-            <tr class="align-middle">
+            <tr class="align-middle" style="display: none">
                 <td>
-                    <%= student.getFirstName() %>
+                    <input class="form-control" data-field="newFirstName" value="<%= student.getFirstName() %>" aria-label="new first name" />
                 </td>
                 <td>
-                    <%= student.getLastName() %>
-                </td>
+                    <input class="form-control" data-field="newLastName" value="<%= student.getLastName() %>" aria-label="new last name" /></td>
                 <td>
-                    <%= student.getGrade() %>
-                </td>
+                    <input class="form-control" data-field="newGrade" value="<%= student.getGrade() %>" aria-label="new department" /></td>
                 <td>
-                    <%= student.getEmail() %>
-                </td>
+                    <input class="form-control" data-field="newEmail" type="email" value="<%= student.getEmail() %>" aria-label="new email" /></td>
                 <td>
-                    <%= student.getPhone().getNumberFormatted() %>
-                </td>
+                    <input class="form-control" data-field="newPhone" value="<%= student.getPhone().getNumber() %>" aria-label="new phone" /></td>
                 <td>
-                    <button class="btn btn-primary" data-function="edit" data-index="<%= students.indexOf(student) %>"><i class="fa fa-pencil"></i></button>
-                    <button class="btn btn-danger" data-function="delete" data-index="<%= students.indexOf(student) %>"><i class="fa fa-trash"></i></button>
-                </td>
+                    <button class="btn btn-success" data-function="save" data-index="<%= students.indexOf(student) %>"><i class="fa fa-save"></i></button>
+                    <button class="btn btn-danger" data-function="cancel" data-index="<%= students.indexOf(student) %>"><i class="fa fa-x"></i></button></td>
             </tr>
             <% } %>
             </tbody>
