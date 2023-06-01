@@ -60,5 +60,29 @@ public class StudentServlet extends HttpServlet {
         request.getSession().setAttribute("students", students);
     }
 
+    @Override
+    public void doPut(HttpServletRequest request, HttpServletResponse response) {
+        int index = Integer.parseInt(request.getParameter("index"));
+        String newFirstName = request.getParameter("newFirstName");
+        String newLastName = request.getParameter("newLastName");
+        String newGrade = request.getParameter("newGrade");
+        String newEmail = request.getParameter("newEmail");
+        String newPhone = request.getParameter("newPhone");
+
+        //If all fields are empty, delete object
+        if(newFirstName.equals("") && newLastName.equals("") && newGrade.equals("") &&
+                newEmail.equals("") && newPhone.equals("")) {
+            doDelete(request, response);
+            return;
+        }
+
+        Student itemToUpdate = DataSource.getInstance().getStudentArrayList().get(index);
+        itemToUpdate.setFirstName(newFirstName);
+        itemToUpdate.setLastName(newLastName);
+        itemToUpdate.setGrade(Integer.parseInt(newGrade));
+        itemToUpdate.setEmail(newEmail);
+        itemToUpdate.setPhone(newPhone);
+    }
+
     public void destroy() { }
 }

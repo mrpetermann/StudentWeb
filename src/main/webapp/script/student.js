@@ -29,6 +29,29 @@ $('[data-function="edit"]').on('click', function() {
     });
 });
 
+$('[data-function="save"]').on('click', function() {
+    let index = $(this).data('index');
+
+    //Updated values
+    const target = $(this).closest('tr');
+    let newFirstName = target.find('[data-field="newFirstName"]').val();
+    let newLastName = target.find('[data-field="newLastName"]').val();
+    let newGrade = target.find('[data-field="newGrade"]').val();
+    let newEmail = target.find('[data-field="newEmail"]').val();
+    let newPhone = target.find('[data-field="newPhone"]').val();
+
+    //Send update request to server
+    $.ajax({
+        type: "PUT",
+        url: './student?index=' + index + '&newFirstName=' + newFirstName +
+            '&newLastName=' + newLastName + '&newGrade=' + newGrade +
+            '&newEmail=' + newEmail + '&newPhone=' + newPhone,
+        success: function() {
+            location.reload();
+        }
+    });
+});
+
 $('[data-function="cancel"]').on('click', function() {
     //Flip animation
     const target = $(this).closest('tr');
