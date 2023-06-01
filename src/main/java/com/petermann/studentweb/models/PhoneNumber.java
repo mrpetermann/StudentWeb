@@ -4,10 +4,10 @@ public class PhoneNumber {
     private final String number;
 
     public PhoneNumber(String number) {
-        if(number.length() == 10 || number.length() == 0)
+        if(number.length() == 10)
             this.number = number;
         else
-            this.number = "0000000000";
+            this.number = "";
     }
 
     public String getNumber() {
