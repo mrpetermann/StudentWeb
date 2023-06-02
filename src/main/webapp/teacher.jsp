@@ -1,5 +1,6 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.petermann.studentweb.models.Teacher" %>
+<%@ page import="com.petermann.studentweb.models.Department" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
@@ -25,7 +26,12 @@
             </div>
             <div class="input-group m-3 col">
                 <label for="department" class="input-group-text">Department</label>
-                <input id="department" class="form-control" name="department" />
+                <select id="department" class="form-control" name="department">
+                    <option value=""></option>
+                    <% for(Department department : Department.values()) { %>
+                        <option value="<%= department.name() %>" ><%=department%></option>
+                    <% } %>
+                </select>
             </div>
         </div>
         <div class="row">
@@ -49,12 +55,12 @@
     <table class="table table-hover m-3">
         <thead>
             <tr>
-                <th class="col">First Name</th>
-                <th class="col">Last Name</th>
-                <th class="col">Department</th>
-                <th class="col">Email</th>
-                <th class="col">Phone</th>
-                <th class="col"></th>
+                <th class="col" style="width:18%">First Name</th>
+                <th class="col" style="width:18%">Last Name</th>
+                <th class="col" style="width:18%">Department</th>
+                <th class="col" style="width:18%">Email</th>
+                <th class="col" style="width:18%">Phone</th>
+                <th class="col" style="width:10%"></th>
             </tr>
         </thead>
         <tbody>
@@ -85,16 +91,28 @@
                     <input class="form-control" data-field="newFirstName" value="<%= teacher.getFirstName() %>" aria-label="new first name" />
                 </td>
                 <td>
-                    <input class="form-control" data-field="newLastName" value="<%= teacher.getLastName() %>" aria-label="new last name" /></td>
+                    <input class="form-control" data-field="newLastName" value="<%= teacher.getLastName() %>" aria-label="new last name" />
+                </td>
                 <td>
-                    <input class="form-control" data-field="newDepartment" value="<%= teacher.getDepartment() %>" aria-label="new department" /></td>
+                    <select id="newDepartment" class="form-control" name="department" data-field="newDepartment" aria-label="new department">
+                        <option value=""></option>
+                        <% for(Department department : Department.values()) { %>
+                        <option value="<%= department.name() %>" <%= department.name().equals(teacher.getDepartment()) ? "selected" : "" %>>
+                            <%=department%>
+                        </option>
+                        <% } %>
+                    </select>
+                </td>
                 <td>
-                    <input class="form-control" data-field="newEmail" type="email" value="<%= teacher.getEmail() %>" aria-label="new email" /></td>
+                    <input class="form-control" data-field="newEmail" type="email" value="<%= teacher.getEmail() %>" aria-label="new email" />
+                </td>
                 <td>
-                    <input class="form-control" data-field="newPhone" value="<%= teacher.getPhone().getNumber() %>" aria-label="new phone" /></td>
+                    <input class="form-control" data-field="newPhone" value="<%= teacher.getPhone().getNumber() %>" aria-label="new phone" />
+                </td>
                 <td>
                     <button class="btn btn-success" data-function="save" data-index="<%= teachers.indexOf(teacher) %>"><i class="fa fa-save"></i></button>
-                    <button class="btn btn-danger" data-function="cancel" data-index="<%= teachers.indexOf(teacher) %>"><i class="fa fa-x"></i></button></td>
+                    <button class="btn btn-danger" data-function="cancel" data-index="<%= teachers.indexOf(teacher) %>"><i class="fa fa-x"></i></button>
+                </td>
             </tr>
         <% } %>
         </tbody>
