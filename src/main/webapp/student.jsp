@@ -1,5 +1,6 @@
 <%@ page import="com.petermann.studentweb.models.Student" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="com.petermann.studentweb.models.Grade" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
@@ -25,7 +26,12 @@
                 </div>
                 <div class="input-group m-3 col">
                     <label for="grade" class="input-group-text">Grade</label>
-                    <input id="grade" class="form-control" name="grade" type="number" min="1" max="12" />
+                    <select id="grade" class="form-control" name="grade">
+                        <option value=""></option>
+                        <% for(Grade grade : Grade.values()) { %>
+                        <option value="<%= grade.name() %>" ><%=grade%></option>
+                        <% } %>
+                    </select>
                 </div>
             </div>
             <div class="row">
@@ -85,16 +91,26 @@
                     <input class="form-control" data-field="newFirstName" value="<%= student.getFirstName() %>" aria-label="new first name" />
                 </td>
                 <td>
-                    <input class="form-control" data-field="newLastName" value="<%= student.getLastName() %>" aria-label="new last name" /></td>
+                    <input class="form-control" data-field="newLastName" value="<%= student.getLastName() %>" aria-label="new last name" />
+                </td>
                 <td>
-                    <input class="form-control" data-field="newGrade" value="<%= student.getGrade() %>" aria-label="new department" /></td>
+                    <select id="newGrade" class="form-control" data-field="newGrade" aria-label="new department">
+                        <option value=""></option>
+                        <% for(Grade grade : Grade.values()) { %>
+                        <option value="<%= grade.name() %>" <%= grade.name().equals(student.getGrade()) ? "selected" : "" %> ><%=grade%></option>
+                        <% } %>
+                    </select>
+                </td>
                 <td>
-                    <input class="form-control" data-field="newEmail" type="email" value="<%= student.getEmail() %>" aria-label="new email" /></td>
+                    <input class="form-control" data-field="newEmail" type="email" value="<%= student.getEmail() %>" aria-label="new email" />
+                </td>
                 <td>
-                    <input class="form-control" data-field="newPhone" value="<%= student.getPhone().getNumber() %>" aria-label="new phone" /></td>
+                    <input class="form-control" data-field="newPhone" value="<%= student.getPhone().getNumber() %>" aria-label="new phone" />
+                </td>
                 <td>
                     <button class="btn btn-success" data-function="save" data-index="<%= students.indexOf(student) %>"><i class="fa fa-save"></i></button>
-                    <button class="btn btn-danger" data-function="cancel" data-index="<%= students.indexOf(student) %>"><i class="fa fa-x"></i></button></td>
+                    <button class="btn btn-danger" data-function="cancel" data-index="<%= students.indexOf(student) %>"><i class="fa fa-x"></i></button>
+                </td>
             </tr>
             <% } %>
             </tbody>

@@ -1,18 +1,18 @@
 package com.petermann.studentweb.models;
 
 public class Student extends Person {
-    private int grade;
+    private String grade;
 
-    public Student(String firstName, String lastName, String email, String phone, int grade) {
+    public Student(String firstName, String lastName, String email, String phone, String grade) {
         super(firstName, lastName, email, phone);
         this.grade = grade;
     }
 
-    public int getGrade() {
+    public String getGrade() {
         return grade;
     }
 
-    public void setGrade(int grade) {
+    public void setGrade(String grade) {
         this.grade = grade;
     }
 }

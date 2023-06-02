@@ -34,14 +34,7 @@ public class StudentServlet extends HttpServlet {
         String lastName = request.getParameter("lastName");
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
-
-        //Get grade or default to 1
-        int grade;
-        try {
-            grade = Integer.parseInt(request.getParameter("grade"));
-        } catch(Exception e) {
-            grade = 1;
-        }
+        String grade = request.getParameter("grade");
 
         //Only create if any field contains a value
         if(!(firstName.equals("") && lastName.equals("")
@@ -79,7 +72,7 @@ public class StudentServlet extends HttpServlet {
         Student itemToUpdate = DataSource.getInstance().getStudentArrayList().get(index);
         itemToUpdate.setFirstName(newFirstName);
         itemToUpdate.setLastName(newLastName);
-        itemToUpdate.setGrade(Integer.parseInt(newGrade));
+        itemToUpdate.setGrade(newGrade);
         itemToUpdate.setEmail(newEmail);
         itemToUpdate.setPhone(newPhone);
     }
